@@ -5,19 +5,19 @@ PACKAGE=$1
 mkdir $PACKAGE
 cd $PACKAGE
 
+apt install git git-flow
 # -------------------git repo -------------------
 [ -d ".git" ] && exit || (
     git init -q .
-    git checkout -b master
-    #git checkout -b develop
-    git checkout -b development
-    git config gitflow.branch.develop development
-    git config user.email ${USERMAIL}
-    git config user.name ${USERNAME}
-    git flow init -d
-    git flow feature start 0000-initializing-git-repo
-    git config --list
 )
+git checkout -b master
+git checkout -b development
+git config gitflow.branch.develop development
+git config user.email ${USERMAIL}
+git config user.name ${USERNAME}
+git flow init -d
+git flow feature start 0000-initializing-git-repo
+git config --list
 # ------------------ ignores --------------------
 
 git add . || exit 1
